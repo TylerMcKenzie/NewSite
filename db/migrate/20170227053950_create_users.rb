@@ -3,9 +3,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :linkedin
-      t.string :github
-      t.string :twitterhandle
+      t.string :about
       t.timestamps
     end
   end
