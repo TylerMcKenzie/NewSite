@@ -2,17 +2,17 @@
 
   <div class="profile-image-container">
     <div class="profile-image">
-      <img src="" alt="" />
+      <img src="<%= @user.profile_image %>" alt="" />
     </div>
 
     <div class="profile-name">
-      <h2>Tyler Mckenzie</h2>
+      <h2><%= @user.name %></h2>
     </div>
   </div>
 
   <div class="profile-about-container">
     <div class="profile-about">
-      <p>This is the about</p>
+      <p><%= @user.about %></p>
     </div>
   </div>
 
@@ -20,16 +20,17 @@
 
     <div class="profile-skills">
       <ul>
+        <% @user.skills.each do |skill| %>
+          <li>
+            <div class="profile-skill">
 
-        <li>
-          <div class="profile-skill">
+              <div class="skill-name">
+                <h2><%= skill.name %></h2>
+              </div>
 
-            <div class="skill-name">
-              <h2>SKILL</h2>
             </div>
-
-          </div>
-        </li>
+          </li>
+        <% end %>
 
       </ul>
     </div>
@@ -44,29 +45,33 @@
 
     <div class="profile-projects finished">
       <ul>
+        <% @user.completed_projects.each do |project| %>
 
-        <li>
-          <a href="#">
-            <div class="profile-project">
+          <li>
+            <a href="#">
+              <div class="profile-project">
 
-              <div class="project-name">
-                <h2>PROJECT NAME</h2>
+                <div class="project-name">
+                  <h2><%= project.name %></h2>
+                </div>
+
+                <div class="project-screenshots">
+                  <ul>
+                    <% project.screenshots.each do |screenshot| %>
+
+                    <li>
+                      <img src="<%= screenshot.url %>" alt="<%= screenshot.alt %>" />
+                    </li>
+
+                    <% end %>
+                  </ul>
+                </div>
+
               </div>
+            </a>
+          </li>
 
-              <div class="project-screenshots">
-                <ul>
-
-                  <li>
-                    <img src="" alt="" />
-                  </li>
-
-                </ul>
-              </div>
-
-            </div>
-          </a>
-        </li>
-
+        <% end %>
       </ul>
     </div>
 
@@ -76,27 +81,33 @@
 
     <div class="profile-projects in-progress">
       <ul>
+        <% @user.incomplete_projects.each do |project| %>
 
         <li>
-          <div class="profile-project">
+          <a href="#">
+            <div class="profile-project">
 
-            <div class="project-name">
-              <h2>PROJECT NAME</h2>
+              <div class="project-name">
+                <h2><%= project.name %></h2>
+              </div>
+
+              <div class="project-screenshots">
+                <ul>
+                  <% project.screenshots.each do |screenshot| %>
+
+                  <li>
+                    <img src="<%= screenshot.url %>" alt="<%= screenshot.alt %>" />
+                  </li>
+
+                  <% end %>
+                </ul>
+              </div>
+
             </div>
-
-            <div class="project-screenshots">
-              <ul>
-
-                <li>
-                  <img src="" alt="" />
-                </li>
-
-              </ul>
-            </div>
-
-          </div>
+          </a>
         </li>
 
+        <% end %>
       </ul>
     </div>
   </div>
@@ -105,6 +116,23 @@
     <div class="miscellaneous">
       <ul>
         <li><a href="#">MISC ITEM</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="contact-container">
+    <div class="contact">
+      <ul>
+      <% @user.contact_types.each do |contactType| %>
+
+        <li>
+          <div class="contact-icon">
+            <a href="<%= contactType.url %>"></a>
+            <i class="icon-<%= contactType.name %>"></i>
+          </div>
+        </li>
+
+      <% end %>
       </ul>
     </div>
   </div>
