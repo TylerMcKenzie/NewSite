@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :projects
   has_many :skills
   has_many :contact_types
+  accepts_nested_attributes_for :projects, :skills, :contact_types, allow_destroy: true, reject_if: :all_blank 
 end

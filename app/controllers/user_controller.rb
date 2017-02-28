@@ -14,4 +14,7 @@ class UserController < ApplicationController
     @user = User.new
   end
 
+  def create
+    p params
+  end
 end
