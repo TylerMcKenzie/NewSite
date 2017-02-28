@@ -2,7 +2,7 @@
 
   <div class="profile-image-container">
     <div class="profile-image">
-      <img src="<%= @user.profile_image %>" alt="" />
+      <img src="<%= @user.profile_image.url %>" alt="" />
     </div>
 
     <div class="profile-name">
@@ -60,7 +60,7 @@
                     <% project.screenshots.each do |screenshot| %>
 
                     <li>
-                      <img src="<%= screenshot.url %>" alt="<%= screenshot.alt %>" />
+                      <img src="<%= screenshot.image.url %>" alt="" />
                     </li>
 
                     <% end %>
@@ -96,7 +96,7 @@
                   <% project.screenshots.each do |screenshot| %>
 
                   <li>
-                    <img src="<%= screenshot.url %>" alt="<%= screenshot.alt %>" />
+                    <img src="<%= screenshot.image.url %>" alt="" />
                   </li>
 
                   <% end %>
@@ -127,8 +127,9 @@
 
         <li>
           <div class="contact-icon">
-            <a href="<%= contactType.url %>"></a>
-            <i class="icon-<%= contactType.name %>"></i>
+            <a href="<%= contactType.url %>">
+              <i class="icon-<%= contactType.name %>"></i>
+            </a>
           </div>
         </li>
 

@@ -7,10 +7,7 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", locals.merge!(:f => builder))
     end
 
-    link_to(name, "#", :class => "dynamic_add", 'data-association' => "#{association}", 'data-content' => "#{fields}")
+    link_to(name, "#", :class => "btn-add-field", 'data-association' => "#{association}", 'data-content' => "#{fields}")
   end
 
-  def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
-  end
 end

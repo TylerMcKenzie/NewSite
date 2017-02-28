@@ -1,7 +1,9 @@
-<%= form_for setup_user(@user), url: user_index_path do |f| %>
+<%= form_for @user, html: { multipart: true }, url: user_index_path do |f| %>
 
+  <%= f.label :user %>
   <div class="form-group form-user">
-    <%= f.label :user %>
+    <%= f.label :profile_image %>
+    <%= f.file_field :profile_image %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :email %>
@@ -14,11 +16,11 @@
     <%= f.label :skills %>
     <%= f.fields_for :skills do |skill_f| %>
 
-      <%= render :partial => 'skill_fields', locals: { f: skill_f, child: skill_f.object} %>
+      <%= render :partial => 'skill_fields', locals: { f: skill_f } %>
 
     <% end %>
 
-    <div class="add-fields">
+    <div class="btn">
       <%= link_to_add_fields "Add Skill", f, :skills %>
     </div>
   </div>
@@ -32,7 +34,7 @@
 
     <% end %>
 
-    <div class="add-fields">
+    <div class="btn">
       <%= link_to_add_fields "Add Project", f, :projects %>
     </div>
   </div>
@@ -44,7 +46,7 @@
       <%= render :partial => 'contact_type_fields', locals: { f: contact_type_f } %>
     <% end %>
 
-    <div class="add-fields">
+    <div class="btn">
       <%= link_to_add_fields "Add Contact Type", f, :contact_types %>
     </div>
   </div>

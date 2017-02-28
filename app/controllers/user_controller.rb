@@ -17,4 +17,10 @@ class UserController < ApplicationController
   def create
     p params
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :about)
+  end
 end
