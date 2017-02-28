@@ -1,6 +1,8 @@
 <%= form_for @user, html: { multipart: true }, url: user_index_path do |f| %>
 
   <%= f.label :user %>
+  <p>This will be the first bit of content that people see.</p>
+
   <div class="form-group form-user">
     <%= f.label :profile_image %>
     <%= f.file_field :profile_image %>
@@ -14,6 +16,8 @@
 
   <div class="form-group form-skills">
     <%= f.label :skills %>
+    <p>These are your skills</p>
+
     <%= f.fields_for :skills do |skill_f| %>
 
       <%= render :partial => 'skill_fields', locals: { f: skill_f } %>
@@ -27,6 +31,7 @@
 
   <div class="form-group form-projects">
     <%= f.label :projects %>
+    <p>Add your projects here</p>
 
     <%= f.fields_for :projects do |project_f| %>
 
@@ -41,6 +46,7 @@
 
   <div class="form-group form-contact-types">
     <%= f.label :contact_types %>
+    <p>This is where your places of contact go ex. (linkedin (this will be used to generate your icon), https//linkedin.com/path/to/you)</p>
 
     <%= f.fields_for :contact_types do |contact_type_f| %>
       <%= render :partial => 'contact_type_fields', locals: { f: contact_type_f } %>
