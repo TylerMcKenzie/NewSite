@@ -15,14 +15,18 @@ class UserController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    p "=============PARAMS====================="
-    p user_params
-    p "=============USER======================="
-    p @user
-    # p "=============PROJECT_PARAMS============="
-    # p @user.projects << new(project_params)
-    p "======================================"
+    @user = UserCreationService.new(user_params)
+    if @user.save
+      redirect_to '/'
+    else
+      @user.errors.full_messages
+    end
+    # p "=============PARAMS====================="
+    # p user_params
+    # p @user
+    # # p "=============PROJECT_PARAMS============="
+    # # p @user.projects << new(project_params)
+    # p "======================================"
   end
 
   private
