@@ -41,7 +41,7 @@ class UserCreationService
 
       return user
     else
-      @errors = user.errors.full_messages
+      user
     end
 
   end
