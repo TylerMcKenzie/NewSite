@@ -46,7 +46,7 @@
 
   <div class="form-group form-contact-types">
     <%= f.label :contact_types %>
-    <p>This is where your places of contact go ex. (linkedin (this will be used to generate your icon), https//linkedin.com/path/to/you)</p>
+    <p>This is where your places of contact go ex. (linkedin, https//linkedin.com/path/to/you)</p>
 
     <%= f.fields_for :contact_types do |contact_type_f| %>
       <%= render :partial => 'contact_type_fields', locals: { f: contact_type_f } %>

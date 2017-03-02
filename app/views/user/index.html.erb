@@ -2,7 +2,7 @@
 
   <div class="profile-image-container">
     <div class="profile-image">
-      <img src="<%= @user.profile_image.url %>" alt="" />
+      <%= image_tag @user.profile_image.url(:medium) %>
     </div>
 
     <div class="profile-name">
