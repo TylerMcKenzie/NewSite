@@ -30,7 +30,6 @@ class UserCreationService
           user.projects << new_project
         end
 
-
       end
 
       if @contact_types
