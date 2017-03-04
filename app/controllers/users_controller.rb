@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def index
     @user = User.first
@@ -6,7 +6,7 @@ class UserController < ApplicationController
     if @user
       render 'index'
     else
-      redirect_to new_user_url
+      redirect_to new_user_registration_path
     end
   end
 
@@ -16,7 +16,7 @@ class UserController < ApplicationController
 
   def create
     @user = UserCreationService.new(user_params)
-    
+
     if @user.save
       redirect_to '/'
     else
