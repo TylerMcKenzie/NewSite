@@ -1,0 +1,18 @@
+<div class="form-group form-projects">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+
+  <%= f.fields_for :screenshots do |screenshot_f| %>
+    <%= render :partial => 'screenshot_fields', locals: { f: screenshot_f } %>
+  <% end %>
+
+  <div class="btn">
+    <%= link_to_add_fields "Add Screenshot", f, :screenshots %>
+  </div>
+
+  <%= link_to "Remove", "#", class: "btn btn-remove-field" %>
+</div>

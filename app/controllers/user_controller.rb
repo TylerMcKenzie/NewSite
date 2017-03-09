@@ -1,17 +1,14 @@
 class UserController < ApplicationController
-
-  def index
+  load_and_authorize_resource
+  
+  def show
     @user = User.first
 
     if @user
-      render 'index'
+      render 'show'
     else
-      redirect_to new_user_url
+      redirect_to new_user_registration_path
     end
-  end
-
-  def new
-    @user = User.new
   end
 
 end

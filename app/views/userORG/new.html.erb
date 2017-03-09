@@ -1,0 +1,62 @@
+<%= form_for @user, html: { multipart: true }, url: user_index_path do |f| %>
+
+  <%= f.label :user %>
+  <p>This will be the first bit of content that people see.</p>
+
+  <div class="form-group form-user">
+    <%= f.label :profile_image %>
+    <%= f.file_field :profile_image %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :about %>
+    <%= f.text_area :about %>
+  </div>
+
+  <div class="form-group form-skills">
+    <%= f.label :skills %>
+    <p>These are your skills</p>
+
+    <%= f.fields_for :skills do |skill_f| %>
+
+      <%= render :partial => 'skill_fields', locals: { f: skill_f } %>
+
+    <% end %>
+
+    <div class="btn">
+      <%= link_to_add_fields "Add Skill", f, :skills %>
+    </div>
+  </div>
+
+  <div class="form-group form-projects">
+    <%= f.label :projects %>
+    <p>Add your projects here</p>
+
+    <%= f.fields_for :projects do |project_f| %>
+
+      <%= render :partial => 'project_fields', locals: { f: project_f } %>
+
+    <% end %>
+
+    <div class="btn">
+      <%= link_to_add_fields "Add Project", f, :projects %>
+    </div>
+  </div>
+
+  <div class="form-group form-contact-types">
+    <%= f.label :contact_types %>
+    <p>This is where your places of contact go ex. (linkedin, https//linkedin.com/path/to/you)</p>
+
+    <%= f.fields_for :contact_types do |contact_type_f| %>
+      <%= render :partial => 'contact_type_fields', locals: { f: contact_type_f } %>
+    <% end %>
+
+    <div class="btn">
+      <%= link_to_add_fields "Add Contact Type", f, :contact_types %>
+    </div>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>
