@@ -6,12 +6,6 @@ before_action :configure_sign_up_params, only: [:create]
   # GET /resource/sign_up
   def new
     super
-
-    #
-    # if User.first
-    #   redirect_to '/'
-    # end
-
   end
 
   # POST /resource
@@ -23,19 +17,19 @@ before_action :configure_sign_up_params, only: [:create]
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

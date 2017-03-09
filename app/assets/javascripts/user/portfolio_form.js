@@ -1,4 +1,4 @@
-App.UserForm = (function() {
+App.UserPortfolioForm = (function() {
 
   function init(formId) {
     var $form = $('#'+formId);
@@ -37,7 +37,5 @@ App.UserForm = (function() {
 });
 
 $(function() {
-  if (/user\/new/.test(window.location)) {
-    var form = App.UserForm().init('new_user');
-  }
+  var form = App.UserPortfolioForm().init('new_portfolio');
 });
