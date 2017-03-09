@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
 
   def index
     @user = User.first
@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if @user
       render 'index'
     else
-      redirect_to new_user_registration_path
+      redirect_to new_user_url
     end
   end
 
