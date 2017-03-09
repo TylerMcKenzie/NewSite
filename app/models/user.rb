@@ -36,7 +36,7 @@ class User < ApplicationRecord
     incomplete_array
   end
 
-  # private
+  protected
 
   def set_role
 
