@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :profile_image, { content_type: ["image/jpeg", "image/png"] }
 
-  has_one :portfolio
+  has_one :portfolio, dependent: :destroy
 
   validates :name, presence: true
 
@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def completed_projects
     completed_array = []
 
-    self.porfolio.projects.each do |project|
+    self.portfolio.projects.each do |project|
       if project.completed
         completed_array << project
       end
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def incomplete_projects
     incomplete_array = []
 
-    self.porfolio.projects.each do |project|
+    self.portfolio.projects.each do |project|
       if !project.completed
         incomplete_array << project
       end
@@ -36,7 +36,7 @@ class User < ApplicationRecord
     incomplete_array
   end
 
-  # private
+  protected
 
   def set_role
 

@@ -1,0 +1,59 @@
+<%= form_for @portfolio, url: user_portfolio_index_path do |f| %>
+
+  <div class="field">
+    <%= f.label :name, class: "control-label" %><br />
+    <%= f.text_field :name, value: current_user.name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :about, class: "control-label" %><br />
+    <%= f.text_area :about %>
+  </div>
+
+  <div class="field-group">
+    <%= f.label :skills %>
+    <p>These are your skills</p>
+
+    <%= f.fields_for :skills do |skill_f| %>
+
+      <%= render :partial => 'partials/skill_fields', locals: { f: skill_f } %>
+
+    <% end %>
+
+    <div class="btn">
+      <%= link_to_add_fields "Add Skill", f, :skills %>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <%= f.label :projects %>
+    <p>Add your projects here</p>
+
+    <%= f.fields_for :projects do |project_f| %>
+
+      <%= render :partial => 'partials/project_fields', locals: { f: project_f } %>
+
+    <% end %>
+
+    <div class="btn">
+      <%= link_to_add_fields "Add Project", f, :projects %>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <%= f.label :contact_types %>
+    <p>This is where your places of contact go ex. (linkedin, https//linkedin.com/path/to/you)</p>
+
+    <%= f.fields_for :contact_types do |contact_type_f| %>
+      <%= render :partial => 'partials/contact_type_fields', locals: { f: contact_type_f } %>
+    <% end %>
+
+    <div class="btn">
+      <%= link_to_add_fields "Add Contact Type", f, :contact_types %>
+    </div>
+  </div>
+
+  <div class="btn btn-submit">
+    <%= f.submit %>
+  </div>
+<% end %>

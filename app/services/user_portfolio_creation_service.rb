@@ -1,19 +1,19 @@
 class UserPortfolioCreationService
 
-  def initialize(params)
-    @user_params = { name: params[:name], email: params[:email], about: params[:about], profile_image: params[:profile_image] }
+  def initialize(user_id, params)
+    @portfolio_params = { name: params[:name], about: params[:about], user_id: user_id }
     @skills = params[:skills_attributes]
     @projects = params[:projects_attributes]
     @contact_types = params[:contact_types_attributes]
   end
 
   def save
-    user = User.new(@user_params)
+    portfolio = Portfolio.new(@portfolio_params)
 
-    if user.save
+    if portfolio.save
       if @skills
         @skills.each do |k, skill|
-          user.skills.create({name: skill[:name], proficiency: skill[:proficiency]})
+          portfolio.skills.create({name: skill[:name], proficiency: skill[:proficiency]})
         end
       end
 
@@ -27,20 +27,20 @@ class UserPortfolioCreationService
             end
           end
 
-          user.projects << new_project
+          portfolio.projects << new_project
         end
 
       end
 
       if @contact_types
         @contact_types.each do |k, contact_type|
-          user.contact_types.create({name: contact_type[:name], url: contact_type[:url]})
+          portfolio.contact_types.create({name: contact_type[:name], url: contact_type[:url]})
         end
       end
 
-      return user
+      return portfolio
     else
-      user
+      portfolio
     end
 
   end

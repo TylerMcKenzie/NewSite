@@ -6,13 +6,13 @@
     </div>
 
     <div class="profile-name">
-      <h2><%= @user.name %></h2>
+      <h2><%= @user.portfolio.name %></h2>
     </div>
   </div>
 
   <div class="profile-about-container">
     <div class="profile-about">
-      <p><%= @user.about %></p>
+      <p><%= @user.portfolio.about %></p>
     </div>
   </div>
 
@@ -123,7 +123,7 @@
   <div class="contact-container">
     <div class="contact">
       <ul>
-      <% @user.contact_types.each do |contactType| %>
+      <% @user.portfolio.contact_types.each do |contactType| %>
 
         <li>
           <div class="contact-icon">
